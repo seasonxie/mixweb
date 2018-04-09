@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <artifactId>mix</artifactId>
+        <groupId>com.zhaotang.mix</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>com.zhaotang.newly</groupId>
+    <artifactId>zhaotang-newly</artifactId>
+    <version>${zhaotang.newly.version}</version>
+    <packaging>war</packaging>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.zhaotang.service</groupId>
+            <artifactId>zhaotang-service</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>newly</finalName>
+
+        <plugins>
+
+            <!-- 编译的时候使用JDK6和UTF8编码 -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 配置Maven插件(mvn jetty:run可以运行项目) -->
+
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.6.16.v20140903</version>
+                <configuration>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/newly</contextPath>
+                    </webApp>
+                    <scanTargets>
+                        <scanTarget>src/main/java</scanTarget>
+                        <scanTarget>src/main/resources</scanTarget>
+                    </scanTargets>
+                </configuration>
+            </plugin>
+
+         <!--   <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.5.3.201107060350</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>
+                                prepare-agent
+                            </goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>JaCoCo Report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>
+                                report
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+-->
+        </plugins>
+    </build>
+</project>
