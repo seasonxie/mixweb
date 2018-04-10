@@ -23,6 +23,7 @@
 
 
     <dependencyManagement>
+      <!--  pluginManagement的配置和plugins的配置是一样的，只是用于继承，使得可以在孩子pom中使用。-->
         <dependencies>
             <dependency>
                 <groupId>com.zhaotang.newly</groupId>
